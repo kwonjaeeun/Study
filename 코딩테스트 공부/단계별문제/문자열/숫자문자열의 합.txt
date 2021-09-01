@@ -1,0 +1,23 @@
+//입력
+//첫째 줄에 숫자의 개수 N (1 ≤ N ≤ 100)이 주어진다.
+//둘째 줄에 숫자 N개가 공백없이 주어진다.
+//출력
+//입력으로 주어진 숫자 N개의 합을 출력한다.
+
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args) {
+        int cnt;
+        int sum = 0;
+        Scanner scanner = new Scanner(System.in);
+        cnt = scanner.nextInt();
+        String s = scanner.next();
+        for (int i = 0; i < cnt; i++) {
+            int num = s.charAt(i)-48;
+            sum += num;
+        }
+        System.out.printf("%d", sum);
+    }
+}

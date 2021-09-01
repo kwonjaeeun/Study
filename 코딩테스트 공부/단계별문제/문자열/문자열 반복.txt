@@ -1,0 +1,42 @@
+//입력
+//첫째 줄에 테스트 케이스의 개수 T(1 ≤ T ≤ 1,000)가 주어진다.
+//각 테스트 케이스는 반복 횟수 R(1 ≤ R ≤ 8), 문자열 S가 공백으로 구분되어 주어진다.
+//S의 길이는 적어도 1이며, 20글자를 넘지 않는다.
+//출력
+//각 테스트 케이스에 대해 P를 출력한다.
+
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args) {
+        int tcnt;
+        Scanner scanner = new Scanner(System.in);
+        tcnt = scanner.nextInt();
+        Generate[] generate = new Generate[tcnt];
+        for (int i = 0; i < tcnt; i++) {
+            int cnt = scanner.nextInt();
+            String word = scanner.next();
+            generate[i] = new Generate(cnt, word);
+        }
+        for (int i = 0; i < tcnt; i++) {
+            for (int j = 0; j < generate[i].word.length(); j++) {
+                for (int k = 0; k < generate[i].cnt; k++) {
+                    System.out.print(generate[i].word.charAt(j));
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static class Generate {
+
+        public int cnt;
+        public String word;
+
+        Generate(int cnt, String word) {
+            this.cnt = cnt;
+            this.word = word;
+        }
+    }
+}
