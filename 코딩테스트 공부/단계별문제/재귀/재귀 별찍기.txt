@@ -1,0 +1,43 @@
+//입력
+//첫째 줄에 N이 주어진다. N은 3의 거듭제곱이다. 즉 어떤 정수 k에 대해 N=3k이며, 이때 1 ≤ k < 8이다.
+//출력
+//첫째 줄부터 N번째 줄까지 별을 출력한다.
+
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args) {
+        int num;
+        Scanner scanner = new Scanner(System.in);
+        num = scanner.nextInt();
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num; j++) {
+                star(num, i, j);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void star(int num, int i, int j) {
+        if(i>num){
+            i%=num;
+        }
+        if(j>num){
+            j%=num;
+        }
+        int check = num / 3;
+        double ch_i = i / check;
+        double ch_j = j / check;
+        if (1 <= ch_i && ch_i < 2 && 1 <= ch_j && ch_j < 2) {
+            System.out.print(" ");
+        } else {
+            if (num == 3) {
+                System.out.print("*");
+            } else {
+                star(num / 3, i, j);
+            }
+        }
+
+    }
+}

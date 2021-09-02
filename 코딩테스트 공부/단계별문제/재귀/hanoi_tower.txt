@@ -1,0 +1,45 @@
+//입력
+//첫째 줄에 첫 번째 장대에 쌓인 원판의 개수 N (1 ≤ N ≤ 20)이 주어진다.
+//출력
+//첫째 줄에 옮긴 횟수 K를 출력한다.
+//두 번째 줄부터 수행 과정을 출력한다.
+// 두 번째 줄부터 K개의 줄에 걸쳐 두 정수 A B를 빈칸을 사이에 두고 출력하는데,
+// 이는 A번째 탑의 가장 위에 있는 원판을 B번째 탑의 가장 위로 옮긴다는 뜻이다.
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args) {
+        int num;
+        Scanner scanner = new Scanner(System.in);
+        num = scanner.nextInt();
+        List<Htower> root=new ArrayList<Htower>();
+        hanoi(num, 1, 2, 3, root);
+        System.out.println(root.size());
+        for (Htower item: root){
+            System.out.printf("%d %d \n",item.from,item.to);
+        }
+    }
+
+    public static void hanoi(int num, int from, int middle, int to,List root) {
+        if (num == 1) {
+            root.add(new Htower(from,to));
+        } else {
+            hanoi(num - 1, from, to, middle,root);
+            root.add(new Htower(from,to));
+            hanoi(num - 1, middle, from, to,root);
+        }
+    }
+    public static class Htower{
+        int from;
+        int to;
+        Htower(int from,int to){
+            this.from=from;
+            this.to=to;
+        }
+    }
+
+
+}
