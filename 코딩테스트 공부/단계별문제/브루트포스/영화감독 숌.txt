@@ -1,0 +1,26 @@
+//입력
+//첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.
+//출력
+//첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.
+
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int nth = scanner.nextInt();
+        int i = 0;
+        while (true) {
+            String a = String.valueOf(i);
+            i++;
+            if (a.contains("666")) {
+                nth--;
+            }
+
+            if (nth == 0) {
+                System.out.println(a);
+                break;
+            }
+        }
+    }
+}
