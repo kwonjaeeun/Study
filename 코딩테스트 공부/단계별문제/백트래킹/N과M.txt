@@ -1,0 +1,52 @@
+//입력
+//첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)
+//출력
+//한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다.
+//중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.
+//수열은 사전 순으로 증가하는 순서로 출력해야 한다.
+
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int Nnum = scanner.nextInt();
+        int Mnum = scanner.nextInt();
+        int[] numArr = new int[Mnum];
+        numcase(Nnum, Mnum, numArr);
+    }
+
+    private static void numcase(int nnum, int mnum, int[] numarr) {
+        if (mnum == 0) {
+            for (int i = 0; i < numarr.length; i++) {
+                System.out.print(numarr[i] + " ");
+            }
+            System.out.println();
+            return;
+        }
+        int cnt = numarr.length - mnum;
+        for (int i = 0; i < nnum; i++) {
+            int[] cnumarr = makenarr(numarr.length, numarr);
+            boolean x = true;
+            for (int j = 0; j < cnt; j++) {
+                if (i + 1 == cnumarr[j]) {
+                    x = false;
+                }
+            }
+            if (cnumarr[cnt] == 0 && x) {
+                cnumarr[cnt] = i + 1;
+                numcase(nnum, mnum - 1, cnumarr);
+
+            }
+        }
+
+    }
+
+    private static int[] makenarr(int num, int[] numarr) {
+        int[] result = new int[num];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = numarr[i];
+        }
+        return result;
+    }
+}
